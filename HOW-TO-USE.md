@@ -11,25 +11,27 @@ Takes photos of grocery receipts and automatically:
 
 ## How to Access
 
-### On Your Phone (iPhone)
+### On Your Phone (iPhone) or Any Device
 
-**Website:** http://192.168.86.29:3000
+**Website:** https://gf-tracker.vercel.app
 
 **Requirements:**
-- ✅ Your phone must be on the **"networko segundo" WiFi** (same as Scott's Mac)
-- ✅ Scott's Mac must be **on and connected** to WiFi
-- ✅ The app must be **running** on Scott's Mac (he'll make sure it's on)
+- ✅ Internet connection (works anywhere - WiFi or cellular!)
+- ✅ That's it! No need for Scott's Mac to be on
 
 **Password:** [Scott will tell you]
+
+**Bookmark it!** Save this link to your iPhone home screen for easy access.
 
 ---
 
 ## Step-by-Step Usage
 
 ### 1. Open the Website
-- Open **Safari** on your iPhone
-- Go to: **http://192.168.86.29:3000**
+- Open **Safari** (or any browser) on your phone
+- Go to: **https://gf-tracker.vercel.app**
 - Enter the password
+- **Tip:** Bookmark this page or add to home screen!
 
 ### 2. Upload a Receipt
 - Tap the **upload area**
@@ -81,9 +83,9 @@ Takes photos of grocery receipts and automatically:
 ## Common Issues
 
 ### "Cannot connect to server"
-- Make sure you're on **"networko segundo" WiFi**
-- Check that Scott's Mac is **on and awake**
+- Check your internet connection (WiFi or cellular)
 - Try refreshing the page
+- If the site is down, text Scott
 
 ### "Analysis failed"
 - The receipt photo might be too blurry
@@ -97,39 +99,71 @@ Takes photos of grocery receipts and automatically:
 
 ---
 
-## Updating Baseline Prices
+## 📊 Managing Baseline Prices (IMPORTANT!)
 
-The app calculates deductions by comparing GF prices to regular prices. You can update these anytime!
+The app calculates tax deductions by comparing **GF prices** to **regular prices**. You should update these prices regularly to get accurate deductions!
 
-**Google Sheet:** [GF Receipt Tracker](https://docs.google.com/spreadsheets/d/1MNzlZYcGzjXWZqUDbf-f3QY5Cx0sPoSWY5Ph7Xc--WY/edit)
+**📝 Google Sheet:** [Open GF Receipt Tracker Sheet](https://docs.google.com/spreadsheets/d/1MNzlZYcGzjXWZqUDbf-f3QY5Cx0sPoSWY5Ph7Xc--WY/edit)
 
-### To Update Prices:
-1. Open the Google Sheet (link above)
+---
+
+### ✏️ How to Update Existing Prices
+
+**When to do this:** Whenever regular prices change at your grocery store
+
+1. Open the [Google Sheet](https://docs.google.com/spreadsheets/d/1MNzlZYcGzjXWZqUDbf-f3QY5Cx0sPoSWY5Ph7Xc--WY/edit)
+2. Click the **"Baseline Prices"** tab (bottom of screen)
+3. Find the category you want to update:
+   - Example: "bread" is currently $3.50
+4. Click on the price cell and type the new price
+   - Example: Change to $4.00 if regular bread now costs more
+5. Changes save automatically - you're done! ✅
+
+**💡 Tip:** Check prices every few months or when you notice big changes at your store.
+
+---
+
+### ➕ How to Add New Food Categories
+
+**When to do this:** When you buy a GF item that isn't in the current list
+
+1. Open the [Google Sheet](https://docs.google.com/spreadsheets/d/1MNzlZYcGzjXWZqUDbf-f3QY5Cx0sPoSWY5Ph7Xc--WY/edit)
 2. Go to the **"Baseline Prices"** tab
-3. Find the category you want to update (e.g., "bread", "crackers")
-4. Update the **"Regular Equivalent Price"** column
-5. Save (automatic) - done! ✅
+3. Scroll to the **bottom** and add a new row:
 
-### To Add New Categories:
-1. Go to the **"Baseline Prices"** tab
-2. Add a new row at the bottom:
-   - **Category:** Name it (lowercase, use hyphens for spaces: "pizza-crust")
-   - **Regular Equivalent Price:** Average price of regular version
-   - **Notes:** (optional) Reminder of what this is
-3. The app will automatically use this for future receipts!
+| Column | What to Enter | Example |
+|--------|--------------|---------|
+| **Category** | Name it (lowercase, use hyphens for spaces) | `pizza-crust` |
+| **Regular Equivalent Price** | What the regular version costs | `4.50` |
+| **Notes** | (Optional) Reminder for yourself | `Frozen pizza crust at Lowe's Foods` |
 
-**Example:**
+4. The app will **automatically** use this category for future receipts!
+
+**Real Examples:**
 ```
 Category          | Regular Equivalent Price | Notes
-pizza-crust       | 4.50                    | Regular frozen pizza crust
+pizza-crust       | 4.50                    | Frozen pizza crust
 gluten-free-beer  | 8.00                    | 6-pack regular beer
+chicken-nuggets   | 5.00                    | Frozen breaded nuggets
 ```
 
-### Current Categories:
-The app recognizes these categories automatically:
-- bread, pasta, crackers, cereal, snacks
-- baking-mix, tortillas, pizza, cookies
-- other (for inherently GF items like produce, meat, milk)
+---
+
+### 📋 Current Categories Already Set Up
+
+The app already knows these categories:
+- **bread** - Loaves, rolls, buns
+- **pasta** - Any pasta or noodles
+- **crackers** - Crackers, rice cakes
+- **cereal** - Breakfast cereals
+- **snacks** - Chips, pretzels, snack bars
+- **baking-mix** - Pancake mix, muffin mix, flour
+- **tortillas** - Flour or corn tortillas
+- **pizza** - Frozen pizzas
+- **cookies** - Cookies, biscuits
+- **other** - Everything else (mostly inherently GF items)
+
+**Add more categories anytime you need them!**
 
 ---
 
