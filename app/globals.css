@@ -1,26 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAFAFA;
+  --foreground: #263235;
+
+  /* Realeyes Brand Colors */
+  --mint-green: #27EABF;
+  --emerald-green: #2DC0A2;
+  --dark-text: #263235;
+  --grey-dark: #666666;
+  --grey-mid: #B0B0B0;
+  --grey-light: #E5E5E5;
+  --grey-lighter: #F5F5F5;
+  --grey-lightest: #FAFAFA;
+  --blue-mid: #4085f3;
+  --blue-light: #93C5FD;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Brand Colors */
+  --color-mint-green: var(--mint-green);
+  --color-emerald-green: var(--emerald-green);
+  --color-dark-text: var(--dark-text);
+  --color-grey-dark: var(--grey-dark);
+  --color-grey-mid: var(--grey-mid);
+  --color-grey-light: var(--grey-light);
+  --color-grey-lighter: var(--grey-lighter);
+  --color-grey-lightest: var(--grey-lightest);
+  --color-blue-mid: var(--blue-mid);
+  --color-blue-light: var(--blue-light);
+
+  /* Typography */
+  --font-family-sans: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family-sans);
+  line-height: 1.6;
 }
