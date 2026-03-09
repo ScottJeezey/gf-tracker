@@ -50,7 +50,7 @@ export default function HomePage() {
           GF Receipt Tracker
         </h1>
         <p className="text-grey-dark mb-8">
-          Upload a receipt photo or PDF to track your gluten-free food costs.
+          Upload a receipt photo to track your gluten-free food costs.
         </p>
 
         <UploadForm onUpload={handleUpload} isLoading={isAnalyzing} />

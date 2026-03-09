@@ -42,7 +42,7 @@ export default function UploadForm({ onUpload, isLoading }: UploadFormProps) {
       <input
         ref={fileInputRef}
         type="file"
-        accept="image/*,application/pdf"
+        accept="image/*"
         onChange={handleFileChange}
         className="hidden"
         id="receipt-upload"
@@ -77,7 +77,7 @@ export default function UploadForm({ onUpload, isLoading }: UploadFormProps) {
             Tap to take photo or upload
           </span>
           <span className="text-grey-mid text-sm mt-2">
-            Supports JPG, PNG, PDF
+            Supports JPG, PNG, WEBP
           </span>
         </label>
       ) : (

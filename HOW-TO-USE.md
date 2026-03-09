@@ -36,7 +36,7 @@ Takes photos of grocery receipts and automatically:
 - Choose one of:
   - **Take Photo** (use camera right now)
   - **Photo Library** (choose existing photo)
-  - **Browse** (choose from Files app)
+- **Note:** Only image files (JPG, PNG, WEBP) are supported
 
 ### 3. Review the Results
 - Wait ~5-10 seconds while Claude analyzes the receipt

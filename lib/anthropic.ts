@@ -12,7 +12,7 @@ export interface VisionAnalysisResult {
 
 export async function analyzeReceiptImage(
   imageBase64: string,
-  mediaType: 'image/jpeg' | 'image/png' | 'image/webp' | 'application/pdf',
+  mediaType: 'image/jpeg' | 'image/png' | 'image/webp' | 'image/gif',
   systemPrompt: string
 ): Promise<VisionAnalysisResult> {
   try {
