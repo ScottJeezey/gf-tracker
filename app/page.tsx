@@ -14,21 +14,12 @@ export default function HomePage() {
     try {
       console.log('File info:', { name: file.name, type: file.type, size: file.size })
 
-      // Convert to base64
-      const base64 = await fileToBase64(file)
-      console.log('Base64 length:', base64.length)
+      // Compress and convert to base64
+      const base64 = await compressImage(file)
+      console.log('Compressed base64 length:', base64.length)
 
-      // Map file type to supported media types
-      let mediaType = 'image/jpeg' as const
-
-      if (file.type === 'image/png') {
-        mediaType = 'image/png'
-      } else if (file.type === 'image/webp') {
-        mediaType = 'image/webp'
-      } else if (file.type === 'image/gif') {
-        mediaType = 'image/gif'
-      }
-
+      // We always compress to JPEG for optimal size/quality balance
+      const mediaType = 'image/jpeg'
       console.log('Using mediaType:', mediaType)
 
       // Analyze with Claude
@@ -73,6 +64,46 @@ export default function HomePage() {
       </div>
     </div>
   )
+}
+
+// Compress and resize image if needed
+async function compressImage(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = (e) => {
+      const img = new Image()
+      img.onload = () => {
+        // Maximum dimensions (Claude Vision works well with these)
+        const MAX_WIDTH = 1568
+        const MAX_HEIGHT = 1568
+
+        let width = img.width
+        let height = img.height
+
+        // Calculate scaling to fit within max dimensions
+        if (width > MAX_WIDTH || height > MAX_HEIGHT) {
+          const ratio = Math.min(MAX_WIDTH / width, MAX_HEIGHT / height)
+          width = Math.floor(width * ratio)
+          height = Math.floor(height * ratio)
+        }
+
+        // Create canvas and draw resized image
+        const canvas = document.createElement('canvas')
+        canvas.width = width
+        canvas.height = height
+        const ctx = canvas.getContext('2d')!
+        ctx.drawImage(img, 0, 0, width, height)
+
+        // Convert to JPEG with quality 0.9
+        const base64 = canvas.toDataURL('image/jpeg', 0.9).split(',')[1]
+        resolve(base64)
+      }
+      img.onerror = reject
+      img.src = e.target?.result as string
+    }
+    reader.onerror = reject
+  })
 }
 
 function fileToBase64(file: File): Promise<string> {
