@@ -15,13 +15,27 @@ export default function HomePage() {
       // Convert to base64
       const base64 = await fileToBase64(file)
 
+      // Map file type to supported media types
+      let mediaType: 'image/jpeg' | 'image/png' | 'image/webp' | 'image/gif' = 'image/jpeg'
+
+      if (file.type === 'image/png') {
+        mediaType = 'image/png'
+      } else if (file.type === 'image/webp') {
+        mediaType = 'image/webp'
+      } else if (file.type === 'image/gif') {
+        mediaType = 'image/gif'
+      } else {
+        // Default to JPEG for HEIC, HEIF, or any other format
+        mediaType = 'image/jpeg'
+      }
+
       // Analyze with Claude
       const response = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           image: base64,
-          mediaType: file.type,
+          mediaType,
         }),
       })
 
