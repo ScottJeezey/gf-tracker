@@ -12,11 +12,14 @@ export default function HomePage() {
     setIsAnalyzing(true)
 
     try {
+      console.log('File info:', { name: file.name, type: file.type, size: file.size })
+
       // Convert to base64
       const base64 = await fileToBase64(file)
+      console.log('Base64 length:', base64.length)
 
       // Map file type to supported media types
-      let mediaType: 'image/jpeg' | 'image/png' | 'image/webp' | 'image/gif' = 'image/jpeg'
+      let mediaType = 'image/jpeg' as const
 
       if (file.type === 'image/png') {
         mediaType = 'image/png'
@@ -24,10 +27,9 @@ export default function HomePage() {
         mediaType = 'image/webp'
       } else if (file.type === 'image/gif') {
         mediaType = 'image/gif'
-      } else {
-        // Default to JPEG for HEIC, HEIF, or any other format
-        mediaType = 'image/jpeg'
       }
+
+      console.log('Using mediaType:', mediaType)
 
       // Analyze with Claude
       const response = await fetch('/api/analyze', {
@@ -35,7 +37,7 @@ export default function HomePage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           image: base64,
-          mediaType,
+          mediaType: mediaType,
         }),
       })
 

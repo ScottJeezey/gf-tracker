@@ -8,10 +8,23 @@ export async function POST(request: Request) {
   try {
     const { image, mediaType } = await request.json()
 
+    console.log('Received request:', {
+      imageLength: image?.length,
+      mediaType,
+      mediaTypeType: typeof mediaType
+    })
+
+    // Ensure mediaType is one of the allowed values
+    const validMediaType = (['image/jpeg', 'image/png', 'image/webp', 'image/gif'].includes(mediaType))
+      ? mediaType
+      : 'image/jpeg'
+
+    console.log('Using validated mediaType:', validMediaType)
+
     // Step 1: Analyze receipt with Claude Vision
     const analysisResult = await analyzeReceiptImage(
       image,
-      mediaType,
+      validMediaType as any,
       RECEIPT_ANALYSIS_PROMPT
     )
 
